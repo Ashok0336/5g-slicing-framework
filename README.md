@@ -13,12 +13,12 @@
    - `vagrant ssh node2-oai-core`
    - `vagrant ssh node3-ueransim-monitor`
 
-## 🧠 Components
+##  Components
 - **Node 1**: ONOS, Helm, Slice Manager (Layer 1)
 - **Node 2**: OAI Core stack via Docker/K8s (Layer 2)
 - **Node 3**: gNB + UE via UERANSIM, monitored by Grafana (Layer 3)
 
-## 📈 Metrics
+##  Metrics
 Grafana dashboards available at http://192.168.56.13:3000
 
 ## 📁 Structure
