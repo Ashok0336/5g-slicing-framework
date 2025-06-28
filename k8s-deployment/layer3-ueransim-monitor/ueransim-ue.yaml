@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ueransim-ue
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ue
+  template:
+    metadata:
+      labels:
+        app: ue
+    spec:
+      containers:
+      - name: ue
+        image: rdefosseo/ueransim:latest
+        command: ["/UERANSIM/build/nr-ue", "-c", "/UERANSIM/config/ue-config.yaml"]

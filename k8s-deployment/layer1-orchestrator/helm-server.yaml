@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helm-server
+  namespace: orchestrator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helm-server
+  template:
+    metadata:
+      labels:
+        app: helm-server
+    spec:
+      containers:
+      - name: helm-server
+        image: alpine/helm:3.12.0
+        command: ["/bin/sh", "-c"]
+        args:
+          - "sleep infinity"

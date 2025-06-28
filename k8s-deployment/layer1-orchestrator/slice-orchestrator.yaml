@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slice-orchestrator
+  namespace: orchestrator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: slice-orchestrator
+  template:
+    metadata:
+      labels:
+        app: slice-orchestrator
+    spec:
+      containers:
+      - name: orchestrator
+        image: tiangolo/uvicorn-gunicorn-fastapi:python3.9
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: app-code
+          mountPath: /app
+      volumes:
+      - name: app-code
+        configMap:
+          name: slice-api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: slice-orchestrator-service
+  namespace: orchestrator
+spec:
+  selector:
+    app: slice-orchestrator
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
