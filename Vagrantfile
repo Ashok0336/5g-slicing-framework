@@ -1,3 +1,5 @@
+
+vagrantfile_content = """
 Vagrant.configure("2") do |config|
   config.vm.define "node1-orchestrator" do |node|
     node.vm.box = "ubuntu/jammy64"
@@ -32,3 +34,10 @@ Vagrant.configure("2") do |config|
     node.vm.provision "shell", path: "node3-ueransim-monitor/scripts/setup.sh"
   end
 end
+"""
+
+vagrantfile_path = "/mnt/data/Vagrantfile"
+with open(vagrantfile_path, "w") as f:
+    f.write(vagrantfile_content.strip())
+
+vagrantfile_path

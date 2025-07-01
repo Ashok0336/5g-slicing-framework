@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: xapp-rc-control
+spec:
+  containers:
+  - name: rc-control
+    image: alpine
+    command: ["sh", "-c", "echo 'Mock RC control logic running'; sleep 3600"]

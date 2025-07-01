@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: xapp-kpm-monitor
+spec:
+  containers:
+  - name: monitor
+    image: alpine
+    command: ["sh", "-c", "echo 'Mock xApp KPM Monitor running'; sleep 3600"]
